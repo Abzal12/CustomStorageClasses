@@ -6,13 +6,14 @@ public class CustomArrayList<T>{
     private Object[] elementSpaces;
     private int actualSize = 0;
     private static final int DEFAULT_CAPACITY = 10;
+    private static final float LOAD_FACTOR = 0.75f;
 
     public CustomArrayList() {
         elementSpaces = new Object[DEFAULT_CAPACITY];
     }
 
     private void ensureCapacity() {
-        if (actualSize == elementSpaces.length) {
+        if (actualSize >= elementSpaces.length * LOAD_FACTOR) {
             elementSpaces = Arrays.copyOf(elementSpaces, elementSpaces.length * 2);
         }
     }
